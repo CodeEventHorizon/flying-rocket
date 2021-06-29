@@ -477,25 +477,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2660559892195458372, guid: f286c6cd688d0b0428c4f2af4ccf4b08, type: 3}
-      propertyPath: mainThrust
-      value: 1000
+    - target: {fileID: 2660559892195458378, guid: f286c6cd688d0b0428c4f2af4ccf4b08, type: 3}
+      propertyPath: Loop
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2660559892195458372, guid: f286c6cd688d0b0428c4f2af4ccf4b08, type: 3}
-      propertyPath: rotationThrust
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2660559892195458377, guid: f286c6cd688d0b0428c4f2af4ccf4b08, type: 3}
-      propertyPath: m_Drag
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2660559892195458377, guid: f286c6cd688d0b0428c4f2af4ccf4b08, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2660559892195458377, guid: f286c6cd688d0b0428c4f2af4ccf4b08, type: 3}
-      propertyPath: m_Constraints
-      value: 56
+    - target: {fileID: 2660559892195458378, guid: f286c6cd688d0b0428c4f2af4ccf4b08, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fc3b526bad5cc26499f603d9d0362b17, type: 3}
+    - target: {fileID: 2660559892195458378, guid: f286c6cd688d0b0428c4f2af4ccf4b08, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2660559892906907630, guid: f286c6cd688d0b0428c4f2af4ccf4b08, type: 3}
       propertyPath: m_Name
