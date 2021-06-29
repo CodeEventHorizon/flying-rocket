@@ -8,6 +8,8 @@ public class Movement : MonoBehaviour
     public float rotationThrust = 100f;
     Rigidbody rb;
     AudioSource audioSource;
+    public AudioClip mainEngine;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +29,7 @@ public class Movement : MonoBehaviour
         if(Input.GetKey(KeyCode.Space)) {
             rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
             if(!audioSource.isPlaying) {
-                audioSource.Play();
+                audioSource.PlayOneShot(mainEngine);
             }
         } else {
             audioSource.Stop();

@@ -4,7 +4,21 @@ using UnityEngine.SceneManagement;
 public class CollisionHandler : MonoBehaviour
 {
     public float levelLoadDelay = 1f;
+    public AudioClip success;
+    public AudioClip crash;
+
+    AudioSource audioSource;
+    bool isTransitioning = false;
+
+    void Start() {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void OnCollisionEnter(Collision other) {
+        if(isTransitioning) {
+            return;
+        }
+
         switch(other.gameObject.tag) {
             case "Friendly":
                 Debug.Log("This thing is friendly");
@@ -18,10 +32,21 @@ public class CollisionHandler : MonoBehaviour
         }
     }
 
+    void LoadNextLevel() {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+        if(nextSceneIndex == SceneManager.sceneCountInBuildSettings) {
+            nextSceneIndex = 0;
+        }
+        SceneManager.LoadScene(nextSceneIndex);
+    }
+
     void StartSuccessSequence()
     {
-        //TODO add SFX upon crash
-        //TODO add particle effect upon crash
+        isTransitioning = true;
+        audioSource.Stop();
+        audioSource.PlayOneShot(success);
+        //TODO add particle effect upon success
         GetComponent<Movement>().enabled = false;
         Invoke("LoadNextLevel", levelLoadDelay);
     }
@@ -32,18 +57,12 @@ public class CollisionHandler : MonoBehaviour
     }
 
     void StartCrashSequence() {
-        //TODO add SFX upon crash
-        //TODO add particle effect upon crash
+        isTransitioning = true;
+        audioSource.Stop();
+        audioSource.PlayOneShot(crash);
+        //TODO add particle effect upon success
         GetComponent<Movement>().enabled = false;
         Invoke("ReloadLevel", levelLoadDelay);
     }
 
-    void LoadNextLevel() {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextSceneIndex = currentSceneIndex + 1;
-        if(nextSceneIndex == SceneManager.sceneCountInBuildSettings) {
-            nextSceneIndex = 0;
-        }
-        SceneManager.LoadScene(nextSceneIndex);
-    }
 }
